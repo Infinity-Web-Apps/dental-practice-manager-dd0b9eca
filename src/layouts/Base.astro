@@ -8,7 +8,10 @@ interface Props {
   description?: string;
 }
 
-const { title = "Untitled Business", description = "a dental office software that helps manage their clients and increase revenue by following up with current and past clients to schedule new appointments. Basically it takes over or fully supports the dental office front office admin staff." } = Astro.props;
+const {
+  title = "Apexly — AI Front Office for Dental Practices",
+  description = "Apexly automatically recalls overdue patients, follows up on unscheduled treatment, and fills your schedule — so your staff can focus on care, not admin chaos."
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="en" class="scroll-smooth">
@@ -18,9 +21,12 @@ const { title = "Untitled Business", description = "a dental office software tha
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
     <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body class="min-h-screen flex flex-col bg-surface-50 text-surface-900 font-body antialiased">
+  <body class="min-h-screen flex flex-col font-body antialiased" style="background: #F7F9FC; color: #1A202C;">
     <Header />
     <main class="flex-1">
       <slot />

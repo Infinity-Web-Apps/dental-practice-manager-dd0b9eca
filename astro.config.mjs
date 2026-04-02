@@ -1,10 +1,8 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://dental-practice-manager.onrender.com',
-  integrations: [sitemap()],
+  site: 'https://apexly.io',
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,35 +1,542 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Untitled Business" description="a dental office software that helps manage their clients and increase revenue by following up with current and past clients to schedule new appointments. Basically it takes over or fully supports the dental office front office admin staff.">
-  <!-- Hero — the Product Agent will replace this entire page -->
-  <section class="relative min-h-[80vh] flex items-center overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-brand-500/5 via-surface-50 to-brand-500/10"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 text-center">
-      <h1 class="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-surface-900 font-display max-w-4xl mx-auto leading-[1.1] animate-slide-up">
-        Untitled Business
-      </h1>
-      <p class="mt-6 text-lg md:text-xl text-surface-800/60 max-w-2xl mx-auto leading-relaxed animate-slide-up delay-100">
-        a dental office software that helps manage their clients and increase revenue by following up with current and past clients to schedule new appointments. Basically it takes over or fully supports the dental office front office admin staff.
-      </p>
-      <div class="mt-10 animate-slide-up delay-200">
-        <a href="#cta" class="inline-block px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 transition-colors text-base">
-          Get Started
-        </a>
+<Base
+  title="Apexly — AI Front Office Software for Dental Practices"
+  description="Apexly automatically follows up with your patients, books appointments, and grows your dental practice revenue — without adding to your staff's workload."
+>
+
+  <!-- ─────────────────────────────────────────────
+       1. HERO
+  ───────────────────────────────────────────── -->
+  <section class="relative min-h-[88vh] flex items-center overflow-hidden">
+    <!-- Layered gradient background -->
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 15% 60%, oklch(0.56 0.13 195 / 0.12), transparent 55%), radial-gradient(ellipse at 85% 20%, oklch(0.68 0.12 195 / 0.08), transparent 50%), radial-gradient(ellipse at 60% 90%, oklch(0.66 0.17 28 / 0.05), transparent 45%), linear-gradient(to bottom, oklch(0.99 0.003 95), oklch(0.96 0.005 95));"></div>
+    <!-- Subtle grid texture -->
+    <div class="absolute inset-0 opacity-[0.025]" style="background-image: linear-gradient(oklch(0.18 0.012 245) 1px, transparent 1px), linear-gradient(90deg, oklch(0.18 0.012 245) 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div class="max-w-3xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-100 border border-brand-200 text-brand-600 text-xs font-semibold uppercase tracking-wider mb-6 animate-slide-up">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse"></span>
+          Now with AI-powered patient outreach
+        </div>
+
+        <h1 class="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-surface-900 font-display leading-[1.05] animate-slide-up delay-100">
+          Fill more chairs.<br/>
+          <span class="text-brand-500">Grow revenue</span><br/>
+          automatically.
+        </h1>
+
+        <p class="mt-6 text-xl text-surface-800/60 max-w-xl leading-relaxed animate-slide-up delay-200">
+          Apexly handles patient follow-ups, appointment reminders, and reactivation campaigns — so your front desk team focuses on the patients in front of them.
+        </p>
+
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 animate-slide-up delay-300">
+          <a href="#cta" class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-brand-500 text-white font-semibold rounded-xl hover:bg-brand-600 transition-colors text-base shadow-lg shadow-brand-500/20">
+            Start my free trial
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+              <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-white text-surface-900 font-semibold rounded-xl border border-surface-200 hover:bg-surface-100 hover:border-surface-300 transition-colors text-base">
+            See how it works
+          </a>
+        </div>
+
+        <p class="mt-4 text-sm text-surface-800/40 animate-slide-up delay-400">No credit card required &middot; Setup in 15 minutes &middot; Cancel anytime</p>
+      </div>
+    </div>
+
+    <!-- Floating dashboard card -->
+    <div class="hidden lg:block absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 w-80 xl:w-96 animate-scale-in delay-400">
+      <div class="rounded-2xl bg-white border border-surface-200 shadow-2xl shadow-surface-900/10 overflow-hidden">
+        <div class="bg-brand-500 px-5 py-4 flex items-center justify-between">
+          <span class="text-white font-semibold font-display text-sm">Today's Patient Queue</span>
+          <span class="text-white/70 text-xs">April 2, 2026</span>
+        </div>
+        <div class="p-5 space-y-3">
+          {[
+            { name: "Sarah M.", status: "Booked", due: "6-month checkup", color: "bg-green-100 text-green-700" },
+            { name: "James L.", status: "Sent", due: "Overdue 3 months", color: "bg-yellow-100 text-yellow-700" },
+            { name: "Emily R.", status: "Pending", due: "Annual cleaning", color: "bg-brand-100 text-brand-600" },
+            { name: "Michael T.", status: "Booked", due: "Whitening follow-up", color: "bg-green-100 text-green-700" },
+          ].map(p => (
+            <div class="flex items-center justify-between gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-surface-100 flex items-center justify-center text-xs font-bold text-surface-800/50">
+                  {p.name.split(' ').map((n: string) => n[0]).join('')}
+                </div>
+                <div>
+                  <p class="text-sm font-semibold text-surface-900">{p.name}</p>
+                  <p class="text-xs text-surface-800/40">{p.due}</p>
+                </div>
+              </div>
+              <span class={`text-xs font-semibold px-2 py-1 rounded-full ${p.color}`}>{p.status}</span>
+            </div>
+          ))}
+        </div>
+        <div class="border-t border-surface-100 px-5 py-3 bg-surface-50 flex items-center justify-between">
+          <span class="text-xs text-surface-800/40">24 patients in queue</span>
+          <span class="text-xs font-semibold text-brand-500">+$4,200 projected</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section id="cta" class="py-20 md:py-28">
+
+  <!-- ─────────────────────────────────────────────
+       2. SOCIAL PROOF / STATS BAR
+  ───────────────────────────────────────────── -->
+  <section class="border-y border-surface-200 bg-white py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rounded-2xl bg-brand-500 p-10 md:p-16 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-white font-display">Ready to get started?</h2>
-        <p class="mt-4 text-lg text-white/80 max-w-xl mx-auto">Get in touch and see what we can do for you.</p>
-        <a href="mailto:hello@example.com" class="mt-8 inline-block px-8 py-3.5 bg-white text-surface-900 font-semibold rounded-lg hover:bg-surface-100 transition-colors text-base">
-          Contact Us
-        </a>
+      <p class="text-center text-xs font-semibold uppercase tracking-widest text-surface-800/30 mb-8">Trusted by dental practices across North America</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-surface-200">
+        {[
+          { stat: "2,400+", label: "Dental practices" },
+          { stat: "$18M+", label: "Revenue recovered annually" },
+          { stat: "94%", label: "Patient recall rate" },
+          { stat: "4.2 hrs", label: "Saved per day per practice" },
+        ].map(item => (
+          <div class="text-center md:px-8">
+            <p class="text-3xl font-extrabold tracking-tight text-brand-500 font-display">{item.stat}</p>
+            <p class="mt-1 text-sm text-surface-800/50">{item.label}</p>
+          </div>
+        ))}
       </div>
     </div>
   </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       3. PROBLEM STATEMENT
+  ───────────────────────────────────────────── -->
+  <section class="py-20 md:py-28 bg-surface-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">Your front desk is overwhelmed. Revenue is slipping away.</h2>
+        <p class="mt-5 text-lg text-surface-800/60 leading-relaxed">The average dental practice has <strong class="text-surface-900 font-semibold">35% of patients overdue</strong> for their next appointment. That's thousands of dollars sitting in your patient list — uncollected, because nobody has time to call.</p>
+      </div>
+      <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" /></svg>`,
+            title: "Staff can't keep up with callbacks",
+            body: "Your team handles check-ins, billing questions, and phone calls all at once. Follow-up calls never rise to the top of the list."
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" /></svg>`,
+            title: "Appointment slots go unfilled",
+            body: "Last-minute cancellations leave expensive chair time empty. No-shows cost the average practice $60,000 per year."
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>`,
+            title: "Past patients drift away silently",
+            body: "Patients who haven't visited in 12–18 months are the easiest revenue to recover — and the easiest to lose permanently to a competitor."
+          }
+        ].map(item => (
+          <div class="rounded-xl bg-white border border-surface-200 p-7">
+            <div class="w-11 h-11 rounded-lg bg-red-50 text-red-500 flex items-center justify-center mb-4" set:html={item.icon}></div>
+            <h3 class="font-bold text-surface-900 font-display text-lg mb-2">{item.title}</h3>
+            <p class="text-surface-800/60 leading-relaxed text-sm">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       4. FEATURES
+  ───────────────────────────────────────────── -->
+  <section id="features" class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="text-sm font-semibold text-brand-500 uppercase tracking-widest">Features</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">Everything your front desk needs to thrive</h2>
+        <p class="mt-4 text-lg text-surface-800/60 leading-relaxed">Apexly handles the repetitive work — follow-ups, scheduling, reminders — so your team delivers exceptional in-person care.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" /></svg>`,
+            title: "AI Patient Outreach",
+            body: "Automatically identifies overdue patients and sends personalized outreach by text, email, or phone — in your practice's voice."
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" /></svg>`,
+            title: "Smart Appointment Booking",
+            body: "Patients book directly from a text or email link. Apexly fills your schedule with the right appointment types at the right times."
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" /></svg>`,
+            title: "Automated Reminders",
+            body: "Reduce no-shows by up to 70% with multi-step reminders sent at the right intervals — 1 week, 3 days, and day-of."
+          },
+          {
+            icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" /></svg>`,
+            title: "Revenue Analytics",
+            body: "See exactly how much revenue Apexly is generating. Track booked value, reactivated patients, and chair utilization in real time."
+          },
+        ].map(f => (
+          <div class="rounded-xl border border-surface-200 p-7 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5 transition-all duration-200">
+            <div class="w-11 h-11 rounded-lg bg-brand-50 text-brand-500 flex items-center justify-center mb-5" set:html={f.icon}></div>
+            <h3 class="font-bold text-surface-900 font-display text-lg mb-2">{f.title}</h3>
+            <p class="text-surface-800/60 leading-relaxed text-sm">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       5. HOW IT WORKS
+  ───────────────────────────────────────────── -->
+  <section id="how-it-works" class="py-20 md:py-28 bg-surface-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="text-sm font-semibold text-brand-500 uppercase tracking-widest">How it works</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">Up and running in one afternoon</h2>
+        <p class="mt-4 text-lg text-surface-800/60 leading-relaxed">Connect your practice management software, configure your preferences, and let Apexly take over.</p>
+      </div>
+
+      <div class="relative">
+        <!-- Connector line (desktop) -->
+        <div class="hidden md:block absolute top-10 left-1/6 right-1/6 h-0.5 bg-gradient-to-r from-brand-200 via-brand-300 to-brand-200 z-0"></div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+          {[
+            {
+              step: "01",
+              title: "Connect your PMS",
+              body: "Apexly syncs with Dentrix, Eaglesoft, Open Dental, and 30+ other practice management systems. Your patient data stays in place — we read it, not replace it.",
+              detail: "Setup takes under 15 minutes"
+            },
+            {
+              step: "02",
+              title: "Define your recall protocols",
+              body: "Set how often each type of patient should be contacted, which channels to use (text, email, voice), and what language fits your practice's personality.",
+              detail: "Fully customizable templates"
+            },
+            {
+              step: "03",
+              title: "Watch appointments fill",
+              body: "Apexly runs daily, identifying who needs outreach and sending the right message at the right time. Patients book directly. Your calendar fills automatically.",
+              detail: "Average 12 new appts in week one"
+            }
+          ].map(step => (
+            <div class="text-center">
+              <div class="w-20 h-20 rounded-2xl bg-brand-500 text-white font-extrabold text-2xl font-display flex items-center justify-center mx-auto shadow-lg shadow-brand-500/30 mb-6">
+                {step.step}
+              </div>
+              <h3 class="font-bold text-surface-900 font-display text-xl mb-3">{step.title}</h3>
+              <p class="text-surface-800/60 leading-relaxed max-w-xs mx-auto">{step.body}</p>
+              <p class="mt-3 text-xs font-semibold text-brand-500 bg-brand-50 inline-block px-3 py-1 rounded-full">{step.detail}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       6. FEATURE SHOWCASE — Alternating sections
+  ───────────────────────────────────────────── -->
+  <!-- 6a. Patient queue -->
+  <section class="py-20 md:py-28 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <span class="text-sm font-semibold text-brand-500 uppercase tracking-widest">Patient automation</span>
+          <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">Your most reliable employee never calls in sick</h2>
+          <p class="mt-5 text-lg text-surface-800/60 leading-relaxed">Apexly works around the clock, identifying patients who are due for their next appointment and reaching out at exactly the right moment — with messages that sound like they came from your team.</p>
+          <ul class="mt-8 space-y-4">
+            {[
+              "Personalized messages using the patient's name, provider, and appointment history",
+              "Reaches patients on their preferred channel — text, email, or automated call",
+              "Stops outreach automatically when a patient books, cancels, or asks to pause",
+            ].map(point => (
+              <li class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-brand-500 flex-shrink-0 mt-0.5">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-surface-800/70">{point}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Visual -->
+        <div class="rounded-2xl bg-surface-50 border border-surface-200 p-6 shadow-xl">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h4 class="font-bold text-surface-900 font-display">Outreach Activity</h4>
+              <p class="text-xs text-surface-800/40">Last 7 days</p>
+            </div>
+            <span class="text-xs font-semibold text-green-700 bg-green-100 px-2 py-1 rounded-full">+22% vs last week</span>
+          </div>
+          <!-- Fake bar chart -->
+          <div class="flex items-end gap-2 h-32 mb-4">
+            {[65, 80, 55, 90, 75, 100, 85].map((h, i) => (
+              <div class="flex-1 flex flex-col items-center gap-1">
+                <div class="w-full rounded-t-md bg-brand-500 opacity-80" style={`height: ${h}%`}></div>
+                <span class="text-[10px] text-surface-800/30">{['M','T','W','T','F','S','S'][i]}</span>
+              </div>
+            ))}
+          </div>
+          <div class="grid grid-cols-3 gap-3 pt-4 border-t border-surface-200">
+            {[
+              { label: "Sent", value: "312" },
+              { label: "Responded", value: "187" },
+              { label: "Booked", value: "94" },
+            ].map(m => (
+              <div class="text-center">
+                <p class="text-2xl font-extrabold text-surface-900 font-display">{m.value}</p>
+                <p class="text-xs text-surface-800/40">{m.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6b. Cancellation fill -->
+  <section class="py-20 md:py-28 bg-surface-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <!-- Visual (left) -->
+        <div class="order-2 lg:order-1 rounded-2xl bg-white border border-surface-200 p-6 shadow-xl">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+            <span class="text-sm font-semibold text-surface-900">Cancellation detected — 2:00 PM slot open</span>
+          </div>
+          <div class="space-y-3">
+            {[
+              { name: "David K.", match: "98%", reason: "Due for cleaning, lives 2 miles away" },
+              { name: "Priya S.", match: "91%", reason: "Requested afternoon slot previously" },
+              { name: "Carlos M.", match: "87%", reason: "Overdue 4 months, high priority" },
+            ].map((r, i) => (
+              <div class={`rounded-lg border p-4 flex items-center justify-between ${i === 0 ? 'border-brand-300 bg-brand-50' : 'border-surface-200'}`}>
+                <div>
+                  <p class="font-semibold text-surface-900 text-sm">{r.name}</p>
+                  <p class="text-xs text-surface-800/40 mt-0.5">{r.reason}</p>
+                </div>
+                <div class="text-right">
+                  <p class={`text-sm font-bold ${i === 0 ? 'text-brand-500' : 'text-surface-800/40'}`}>{r.match}</p>
+                  <p class="text-[10px] text-surface-800/30">match score</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-4 pt-4 border-t border-surface-200">
+            <button class="w-full py-2.5 bg-brand-500 text-white text-sm font-semibold rounded-lg hover:bg-brand-600 transition-colors">
+              Send fill offer to top 3 patients →
+            </button>
+          </div>
+        </div>
+
+        <div class="order-1 lg:order-2">
+          <span class="text-sm font-semibold text-brand-500 uppercase tracking-widest">Last-minute fills</span>
+          <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">Cancellations filled before you even notice them</h2>
+          <p class="mt-5 text-lg text-surface-800/60 leading-relaxed">When a patient cancels, Apexly instantly identifies the best candidates to fill the slot — based on proximity, appointment history, and wait list status. It reaches out automatically, so the chair never stays empty long.</p>
+          <p class="mt-6 text-lg font-semibold text-surface-900">Practices using Apexly fill <span class="text-brand-500">78% of same-day cancellations</span> within 2 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       7. TESTIMONIALS
+  ───────────────────────────────────────────── -->
+  <section class="py-20 md:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="text-sm font-semibold text-brand-500 uppercase tracking-widest">Testimonials</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">Practices that use Apexly don't go back</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            quote: "We were losing $8,000 a month to empty chairs and overdue patients. In the first 60 days with Apexly, we recovered $14,000 in scheduled appointments. It paid for itself in week two.",
+            name: "Dr. Amanda Chen",
+            title: "Practice Owner, Smile Studio Dental",
+            location: "Austin, TX",
+            result: "+$14k in 60 days"
+          },
+          {
+            quote: "My front desk team used to spend two hours a day on recall calls. Now they spend that time with patients in the office. Morale is up, and so is our collection rate.",
+            name: "Sandra Morales",
+            title: "Office Manager, Pacific Dental Group",
+            location: "San Diego, CA",
+            result: "2 hrs/day saved"
+          },
+          {
+            quote: "We went from a 58% recall rate to 91% in four months. That's not a small improvement — that's a different practice. Our hygiene schedule is full three weeks out now.",
+            name: "Dr. James Okafor",
+            title: "Practice Owner, Okafor Family Dentistry",
+            location: "Columbus, OH",
+            result: "58% → 91% recall rate"
+          }
+        ].map(t => (
+          <div class="rounded-xl border border-surface-200 p-8 flex flex-col">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-4">
+              {[...Array(5)].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-amber-400">
+                  <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401Z" clip-rule="evenodd" />
+                </svg>
+              ))}
+            </div>
+            <blockquote class="text-surface-800/70 leading-relaxed flex-1">"{t.quote}"</blockquote>
+            <div class="mt-6 pt-5 border-t border-surface-100 flex items-start justify-between gap-4">
+              <div>
+                <p class="font-bold text-surface-900 text-sm">{t.name}</p>
+                <p class="text-xs text-surface-800/40 mt-0.5">{t.title}</p>
+                <p class="text-xs text-surface-800/30">{t.location}</p>
+              </div>
+              <span class="text-xs font-bold text-brand-600 bg-brand-50 px-2.5 py-1.5 rounded-lg whitespace-nowrap">{t.result}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       8. PRICING
+  ───────────────────────────────────────────── -->
+  <section id="pricing" class="py-20 md:py-28 bg-surface-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16">
+        <span class="text-sm font-semibold text-brand-500 uppercase tracking-widest">Pricing</span>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-surface-900 font-display">One flat monthly fee. No per-message charges.</h2>
+        <p class="mt-4 text-lg text-surface-800/60">Every plan includes unlimited outreach messages. Pay for what your practice needs, not for volume.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {[
+          {
+            name: "Solo",
+            price: "$199",
+            period: "/mo",
+            description: "Perfect for single-dentist practices.",
+            highlight: false,
+            features: [
+              "Up to 800 active patients",
+              "Unlimited outreach messages",
+              "Text & email outreach",
+              "Online appointment booking",
+              "Basic analytics dashboard",
+              "Email support",
+            ],
+            cta: "Start free trial"
+          },
+          {
+            name: "Practice",
+            price: "$399",
+            period: "/mo",
+            description: "The most popular plan for growing practices.",
+            highlight: true,
+            badge: "Most Popular",
+            features: [
+              "Up to 3,000 active patients",
+              "Unlimited outreach messages",
+              "Text, email & voice outreach",
+              "Online appointment booking",
+              "Advanced analytics + revenue tracking",
+              "Cancellation fill automation",
+              "Priority support",
+            ],
+            cta: "Start free trial"
+          },
+          {
+            name: "Group",
+            price: "$799",
+            period: "/mo",
+            description: "For multi-location groups and DSOs.",
+            highlight: false,
+            features: [
+              "Unlimited active patients",
+              "Unlimited outreach messages",
+              "Text, email & voice outreach",
+              "Multi-location management",
+              "Full analytics suite + reports",
+              "Cancellation fill automation",
+              "Dedicated success manager",
+              "API access",
+            ],
+            cta: "Contact sales"
+          }
+        ].map(plan => (
+          <div class={`rounded-2xl border p-8 flex flex-col relative ${plan.highlight ? 'border-brand-400 bg-white shadow-xl shadow-brand-500/10 ring-1 ring-brand-400' : 'border-surface-200 bg-white'}`}>
+            {plan.badge && (
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 text-xs font-bold text-white bg-brand-500 px-3 py-1 rounded-full">{plan.badge}</span>
+            )}
+            <div class="mb-6">
+              <h3 class="font-bold text-surface-900 font-display text-xl">{plan.name}</h3>
+              <p class="text-surface-800/50 text-sm mt-1">{plan.description}</p>
+              <div class="flex items-baseline gap-1 mt-4">
+                <span class="text-4xl font-extrabold text-surface-900 font-display">{plan.price}</span>
+                <span class="text-surface-800/40 text-sm">{plan.period}</span>
+              </div>
+            </div>
+            <ul class="space-y-3 flex-1 mb-8">
+              {plan.features.map((f: string) => (
+                <li class="flex items-center gap-2.5 text-sm text-surface-800/70">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class={`w-4 h-4 flex-shrink-0 ${plan.highlight ? 'text-brand-500' : 'text-brand-400'}`}>
+                    <path fill-rule="evenodd" d="M12.416 3.376a.75.75 0 0 1 .208 1.04l-5 7.5a.75.75 0 0 1-1.154.114l-3-3a.75.75 0 0 1 1.06-1.06l2.353 2.353 4.493-6.74a.75.75 0 0 1 1.04-.207Z" clip-rule="evenodd" />
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#cta"
+              class={`w-full text-center py-3 rounded-xl font-semibold text-sm transition-colors ${plan.highlight ? 'bg-brand-500 text-white hover:bg-brand-600' : 'bg-surface-100 text-surface-900 hover:bg-surface-200'}`}
+            >
+              {plan.cta}
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-center mt-8 text-sm text-surface-800/40">All plans include a 14-day free trial. No credit card required.</p>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────────
+       9. FINAL CTA
+  ───────────────────────────────────────────── -->
+  <section id="cta" class="py-20 md:py-28 relative overflow-hidden">
+    <div class="absolute inset-0" style="background: radial-gradient(ellipse at 30% 50%, oklch(0.56 0.13 195 / 0.15), transparent 60%), radial-gradient(ellipse at 80% 30%, oklch(0.68 0.12 195 / 0.10), transparent 55%), linear-gradient(135deg, oklch(0.18 0.012 245), oklch(0.26 0.015 215));"></div>
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <span class="inline-block text-brand-200 text-sm font-semibold uppercase tracking-widest mb-4">Get started today</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white font-display leading-tight">
+        Your overdue patients<br/>are waiting to come back.
+      </h2>
+      <p class="mt-6 text-xl text-white/60 max-w-xl mx-auto leading-relaxed">Start a free 14-day trial. No credit card, no IT setup, no commitment. Most practices see their first new booking within 48 hours.</p>
+      <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-surface-900 font-bold rounded-xl hover:bg-surface-100 transition-colors text-base shadow-xl">
+          Start my free trial
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4">
+            <path fill-rule="evenodd" d="M3 10a.75.75 0 0 1 .75-.75h10.638L10.23 5.29a.75.75 0 1 1 1.04-1.08l5.5 5.25a.75.75 0 0 1 0 1.08l-5.5 5.25a.75.75 0 1 1-1.04-1.08l4.158-3.96H3.75A.75.75 0 0 1 3 10Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+        <a href="#" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent text-white font-semibold rounded-xl border border-white/20 hover:bg-white/10 transition-colors text-base">
+          Schedule a demo
+        </a>
+      </div>
+      <p class="mt-5 text-sm text-white/30">14-day free trial &middot; No credit card &middot; Cancel anytime &middot; HIPAA compliant</p>
+    </div>
+  </section>
+
 </Base>

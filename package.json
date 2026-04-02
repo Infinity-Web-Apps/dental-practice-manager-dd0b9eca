@@ -1,5 +1,5 @@
 {
-  "name": "untitled-business",
+  "name": "apexly",
   "type": "module",
   "version": "1.0.0",
   "scripts": {
@@ -8,9 +8,8 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^5.0.0",
-    "@astrojs/sitemap": "^3.7.0",
-    "@tailwindcss/vite": "^4.0.0",
-    "tailwindcss": "^4.0.0"
+    "astro": "5.18.1",
+    "@tailwindcss/vite": "4.2.2",
+    "tailwindcss": "4.2.2"
   }
 }
